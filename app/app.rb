@@ -14,9 +14,8 @@ class BookmarkManager < Sinatra::Base
       @user ||= User.get(session[:user_id])
     end
     def login
-      @user = User.authenticate(params[:user_email], params[:password])
-      p @user
-      if @user
+      user = User.authenticate(params[:user_email], params[:password])
+      if user
         session[:user_id] = user.id
         redirect '/links'
       else

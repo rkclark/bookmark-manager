@@ -9,24 +9,17 @@ feature "FEATURE: add new link" do
 
   scenario "can add new link" do
     sign_up
-    click_button('add_new_link')
-    fill_in 'link_title', :with => 'BBC'
-    fill_in 'link_url', :with => "www.bbc.co.uk"
-    click_button('submit_link')
+    create_link("Makers Academy", "www.makersacademy.com", 'Education')
     within 'ul#links' do
-      expect(page).to have_content('BBC')
+      expect(page).to have_content('Makers Academy')
     end
   end
 
   scenario "can add new link with a tag" do
     sign_up
-    click_button('add_new_link')
-    fill_in 'link_title', :with => 'BBC'
-    fill_in 'link_url', :with => "www.bbc.co.uk"
-    fill_in 'link_tags', :with => "News"
-    click_button('submit_link')
+    create_link("Makers Academy", "www.makersacademy.com", 'Education')
     within 'ul#links' do
-      expect(page).to have_content('Tags: News')
+      expect(page).to have_content('Tags: Education')
     end
   end
 

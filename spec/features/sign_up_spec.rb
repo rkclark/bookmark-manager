@@ -25,6 +25,7 @@ feature "FEATURE: sign up" do
     expect(User.all.count).to eq 0
     expect(page).to have_content "Email must not be blank"
     end
+
     scenario "cannot use invalid email address" do
       visit('/')
       fill_in 'user_email', :with => "i am not an email address"
@@ -33,5 +34,12 @@ feature "FEATURE: sign up" do
       click_button 'sign_up'
       expect(User.all.count).to eq 0
       expect(page).to have_content "Email has an invalid format"
-      end
+    end
+
+    scenario "cannot use an email address already registered" do
+      sign_up
+      sign_up
+      expect(User.all.count).to eq 1
+      expect(page).to have_content "Email is already taken"
+    end
 end

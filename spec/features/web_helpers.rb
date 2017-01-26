@@ -7,7 +7,6 @@ def sign_up
 end
 
 def create_link(title, url, *tags)
-  sign_up
   click_button('add_new_link')
   fill_in 'link_title', :with => title
   fill_in 'link_url', :with => url

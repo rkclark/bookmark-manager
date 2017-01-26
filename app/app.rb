@@ -14,11 +14,14 @@ class BookmarkManager < Sinatra::Base
       @user ||= User.get(session[:user_id])
     end
     def login
-      user = User.authenticate(params[:user_email], params[:password])
+      user = User.authenticate(params[:user_email], params[:user_password])
       if user
+        p "HAVE USER"
+        p user
         session[:user_id] = user.id
         redirect '/links'
       else
+        p "DONT HAVE USER"
         flash.now[:errors] = ['The email or password is incorrect']
         redirect '/sessions/new'
       end

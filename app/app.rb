@@ -22,7 +22,7 @@ class BookmarkManager < Sinatra::Base
         redirect '/links'
       else
         p "DONT HAVE USER"
-        flash.now[:errors] = ['The email or password is incorrect']
+        flash[:error] = ['The email or password is incorrect']
         redirect '/sessions/new'
       end
     end

@@ -1,6 +1,6 @@
 feature 'FEATURE: Can filter by tags' do
   scenario 'Can see links for specific tags' do
-    sign_in
+    sign_up
     create_link("Makers Academy", "www.makersacademy.com", "Education")
     create_link("BBC", "www.bbc.co.uk", "news")
     visit('/tags/News')

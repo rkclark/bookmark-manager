@@ -1,6 +1,6 @@
 feature "FEATURE: add new link" do
   scenario "can access new link page" do
-    sign_in
+    sign_up
     click_button('add_new_link')
     within 'form#new_link_form' do
       expect(page).to have_selector('button#submit_link')
@@ -8,7 +8,7 @@ feature "FEATURE: add new link" do
   end
 
   scenario "can add new link" do
-    sign_in
+    sign_up
     click_button('add_new_link')
     fill_in 'link_title', :with => 'BBC'
     fill_in 'link_url', :with => "www.bbc.co.uk"
@@ -19,7 +19,7 @@ feature "FEATURE: add new link" do
   end
 
   scenario "can add new link with a tag" do
-    sign_in
+    sign_up
     click_button('add_new_link')
     fill_in 'link_title', :with => 'BBC'
     fill_in 'link_url', :with => "www.bbc.co.uk"
@@ -31,7 +31,7 @@ feature "FEATURE: add new link" do
   end
 
   scenario "can add new link with multiple tags" do
-    sign_in
+    sign_up
     create_link("Makers Academy", "www.makersacademy.com", 'Education', 'Coding', 'Pizza')
     expect(Link.last.tags.count).to eq 3
   end

@@ -1,9 +1,13 @@
 <form class="" action="/users" method="post">
+
   <label for="user_email">Email</label>
-  <input type="text" name="user_email" value=<%= "\"#{@user_email}\"" %>>
+  <input type="email" name="user_email" required value=<%= "\"#{@user_email}\"" %>>
+
   <label for="user_password">Password</label>
-  <input type="password" name="user_password" value="">
+  <input type="password" required name="user_password" value="">
+
   <label for="password_confirmation">Confirm Password</label>
-  <input type="password" name="password_confirmation" value="">
+  <input type="password" required name="password_confirmation" value="">
+
   <button type="submit" id="sign_up" name="sign_up">Sign Up</button>
 </form>

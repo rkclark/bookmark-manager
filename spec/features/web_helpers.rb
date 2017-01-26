@@ -13,3 +13,10 @@ def create_link(title, url, *tags)
   fill_in 'link_tags', :with => [*tags].join(",")
   click_button('submit_link')
 end
+
+def sign_in
+  visit("/sessions/new")
+  fill_in 'user_email', :with => "test@gmail.com"
+  fill_in 'user_password', :with => "password"
+  click_button('sign_in')
+end

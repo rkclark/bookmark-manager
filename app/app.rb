@@ -6,8 +6,11 @@ require './app/dmconfig.rb'
 class BookmarkManager < Sinatra::Base
 
   enable :sessions
+  enable :method_override
   set :session_secret, 'super secret'
   register Sinatra::Flash
+  use Rack::MethodOverride
+
 
   helpers do
     def current_user
@@ -16,12 +19,9 @@ class BookmarkManager < Sinatra::Base
     def login
       user = User.authenticate(params[:user_email], params[:user_password])
       if user
-        p "HAVE USER"
-        p user
         session[:user_id] = user.id
         redirect '/links'
       else
-        p "DONT HAVE USER"
         flash[:error] = ['The email or password is incorrect']
         redirect '/sessions/new'
       end
@@ -38,6 +38,12 @@ class BookmarkManager < Sinatra::Base
 
   post '/sessions/' do
     login
+  end
+
+  delete '/sessions/' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye!'
+    redirect '/links'
   end
 
   get '/users/new' do

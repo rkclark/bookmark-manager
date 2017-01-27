@@ -5,7 +5,6 @@ class BookmarkManager < Sinatra::Base
   set :session_secret, 'super secret'
   register Sinatra::Flash
   use Rack::MethodOverride
-  set :app_file, 'app/app.rb'
 
   get '/' do
     redirect '/users/new'

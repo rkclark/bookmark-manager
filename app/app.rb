@@ -3,7 +3,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 
 require './app/dmconfig.rb'
-require_relative 'controllers/server'
+require_relative 'server'
 require_relative 'controllers/links'
 require_relative 'controllers/users'
 require_relative 'controllers/sessions'

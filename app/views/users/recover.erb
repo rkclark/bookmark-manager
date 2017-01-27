@@ -1,0 +1,6 @@
+<form action="/users/recover" method="post">
+  <h2>Password Recovery</h2>
+  <label for="user_recovery_email">Email</label>
+  <input type="email" name="user_recovery_email" required value=<%= "\"#{@user_email}\"" %>>
+  <button type="submit" name="password_recover" id="password_recover">Recover Password</button>
+</form>

@@ -8,9 +8,11 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
+require 'timecop'
 
 require_relative 'helpers/session.rb'
 require_relative 'helpers/link.rb'
+require_relative 'helpers/recover.rb'
 
 
 Capybara.app = BookmarkManager

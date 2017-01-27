@@ -1,5 +1,5 @@
 <form class="" action="/sessions/" method="post">
-
+  <h2>Sign In</h2>
   <label for="user_email">Email</label>
   <input type="email" name="user_email" required value=<%= "\"#{@user_email}\"" %>>
 
@@ -7,4 +7,5 @@
   <input type="password" required name="user_password" value="">
 
   <button type="submit" id="sign_in" name="sign_in">Sign In</button>
+  <a href="/users/recover">Recover Password</a>
 </form>

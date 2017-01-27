@@ -4,8 +4,10 @@ require 'sinatra/flash'
 require 'sinatra/partial'
 require 'mailgun-ruby'
 
-require 'dotenv'
-Dotenv.load
+if ENV['RACK_ENV'] == 'development' || ENV['RACK_ENV'] == 'test'
+  require 'dotenv'
+  Dotenv.load
+end
 
 require_relative 'dmconfig'
 require_relative 'server.rb'

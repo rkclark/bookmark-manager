@@ -3,6 +3,7 @@ feature "FEATURE: Recover password" do
   before do
     sign_up
     Capybara.reset!
+    allow(SendRecoverLink).to receive(:call)
   end
   let(:user) { User.first }
   scenario "can access password recovery" do
@@ -50,5 +51,9 @@ feature "FEATURE: Recover password" do
     set_password(user_password: "newpassword", password_confirmation: "newpassword")
     visit("/users/reset_password?token=#{user.password_token}")
     expect(page).to have_content("Your token is invalid")
+  end
+  scenario "it calls the SendRecoverLink services to send the link" do
+    expect(SendRecoverLink).to receive(:call).with(user)
+    recover_password
   end
 end

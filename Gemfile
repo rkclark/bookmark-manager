@@ -11,6 +11,8 @@ gem 'dm-postgres-adapter'
 gem 'dm-transactions'
 gem 'bcrypt'
 gem 'sinatra-flash'
+gem 'mailgun-ruby'
+gem 'dotenv'
 
 group :test do
   gem 'rspec'
